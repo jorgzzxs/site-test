@@ -1,0 +1,365 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Acesso Administrativo | TemplateStore</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="icon" type="image/x-icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🔒</text></svg>">
+    <style>
+        /* Estilos específicos para a página de login administrativo */
+        .admin-login-page {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            padding: 20px;
+        }
+        
+        .admin-login-container {
+            background: white;
+            border-radius: 10px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+            width: 100%;
+            max-width: 400px;
+            padding: 40px;
+        }
+        
+        .admin-login-header {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+        
+        .admin-login-header .logo {
+            justify-content: center;
+            margin-bottom: 15px;
+        }
+        
+        .admin-login-header h1 {
+            font-size: 24px;
+            margin-bottom: 10px;
+            color: #333;
+        }
+        
+        .admin-login-header p {
+            color: #666;
+            font-size: 14px;
+        }
+        
+        .admin-login-form {
+            margin-bottom: 20px;
+        }
+        
+        .form-group {
+            margin-bottom: 20px;
+        }
+        
+        .form-group label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: 500;
+            color: #333;
+        }
+        
+        .form-group input {
+            width: 100%;
+            padding: 12px 15px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            font-size: 16px;
+            transition: border-color 0.3s;
+        }
+        
+        .form-group input:focus {
+            outline: none;
+            border-color: #667eea;
+        }
+        
+        .admin-login-btn {
+            width: 100%;
+            padding: 12px;
+            background: #667eea;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            font-size: 16px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: background 0.3s;
+        }
+        
+        .admin-login-btn:hover {
+            background: #5a6fd8;
+        }
+        
+        .admin-login-btn:disabled {
+            background: #aaa;
+            cursor: not-allowed;
+        }
+        
+        .admin-login-footer {
+            text-align: center;
+            margin-top: 20px;
+            padding-top: 20px;
+            border-top: 1px solid #eee;
+        }
+        
+        .admin-login-footer p {
+            color: #666;
+            font-size: 13px;
+            margin-bottom: 10px;
+        }
+        
+        .admin-login-footer a {
+            color: #667eea;
+            text-decoration: none;
+        }
+        
+        .admin-login-footer a:hover {
+            text-decoration: underline;
+        }
+        
+        .error-message {
+            background: #fee;
+            color: #c33;
+            padding: 10px;
+            border-radius: 5px;
+            margin-bottom: 20px;
+            text-align: center;
+            font-size: 14px;
+            display: none;
+        }
+        
+        .success-message {
+            background: #efe;
+            color: #3a3;
+            padding: 10px;
+            border-radius: 5px;
+            margin-bottom: 20px;
+            text-align: center;
+            font-size: 14px;
+            display: none;
+        }
+        
+        .hidden-access {
+            display: none;
+        }
+        
+        .access-hint {
+            margin-top: 10px;
+            font-size: 12px;
+            color: #888;
+            text-align: center;
+        }
+        
+        /* Estilos para modo escuro */
+        body.dark-mode .admin-login-container {
+            background: #1a1a1a;
+            color: #f0f0f0;
+        }
+        
+        body.dark-mode .admin-login-header h1 {
+            color: #f0f0f0;
+        }
+        
+        body.dark-mode .admin-login-header p {
+            color: #aaa;
+        }
+        
+        body.dark-mode .form-group label {
+            color: #f0f0f0;
+        }
+        
+        body.dark-mode .form-group input {
+            background: #2a2a2a;
+            border-color: #444;
+            color: #f0f0f0;
+        }
+        
+        body.dark-mode .admin-login-footer {
+            border-color: #444;
+        }
+        
+        body.dark-mode .admin-login-footer p {
+            color: #aaa;
+        }
+    </style>
+</head>
+<body>
+    <div class="admin-login-page">
+        <div class="admin-login-container">
+            <div class="admin-login-header">
+                <div class="logo">
+                    <a href="index.html">
+                        <span class="logo-icon">🚀</span>
+                        <span class="logo-text">Template<span class="logo-highlight">Store</span></span>
+                    </a>
+                </div>
+                <h1>Acesso Administrativo</h1>
+                <p>Área restrita para administradores do sistema</p>
+            </div>
+            
+            <div class="error-message" id="error-message">
+                Chave de acesso inválida. Tente novamente.
+            </div>
+            
+            <div class="success-message" id="success-message">
+                Acesso autorizado! Redirecionando...
+            </div>
+            
+            <div class="admin-login-form">
+                <div class="form-group">
+                    <label for="access-key">Chave de Acesso</label>
+                    <input type="password" id="access-key" placeholder="Digite a chave de acesso administrativa">
+                </div>
+                
+                <button class="admin-login-btn" id="login-btn">Acessar Painel Administrativo</button>
+                
+                <div class="access-hint">
+                    <p>Esta é uma área restrita. Apenas administradores autorizados têm acesso.</p>
+                </div>
+            </div>
+            
+            <div class="hidden-access" id="hidden-access">
+                <p>Para acesso direto via URL, use: <code>admin.html?key=SUA_CHAVE_SECRETA</code></p>
+                <button class="btn btn-small btn-outline" id="copy-url">Copiar URL de Acesso</button>
+            </div>
+            
+            <div class="admin-login-footer">
+                <p><a href="index.html">← Voltar para o site principal</a></p>
+                <p class="security-notice">
+                    <i class="fas fa-shield-alt"></i> Este é um sistema seguro de autenticação baseado em chave única.
+                </p>
+            </div>
+        </div>
+    </div>
+
+    <script src="auth.js"></script>
+    <script>
+        // Script específico para a página de login administrativo
+        document.addEventListener('DOMContentLoaded', function() {
+            // Verificar se já está autenticado
+            if (isAuthenticated()) {
+                document.getElementById('success-message').style.display = 'block';
+                document.getElementById('success-message').textContent = 'Você já está autenticado! Redirecionando...';
+                
+                setTimeout(() => {
+                    window.location.href = 'admin.html';
+                }, 1000);
+                return;
+            }
+            
+            // Configurar botão de login
+            const loginBtn = document.getElementById('login-btn');
+            const accessKeyInput = document.getElementById('access-key');
+            const errorMessage = document.getElementById('error-message');
+            const successMessage = document.getElementById('success-message');
+            const hiddenAccess = document.getElementById('hidden-access');
+            
+            // Mostrar acesso oculto se houver parâmetro especial na URL
+            const urlParams = new URLSearchParams(window.location.search);
+            if (urlParams.has('showAccess')) {
+                hiddenAccess.style.display = 'block';
+            }
+            
+            // Configurar botão de copiar URL
+            const copyUrlBtn = document.getElementById('copy-url');
+            if (copyUrlBtn) {
+                copyUrlBtn.addEventListener('click', function() {
+                    const url = `${window.location.origin}/admin.html?key=SUA_CHAVE_SECRETA`;
+                    navigator.clipboard.writeText(url).then(() => {
+                        const originalText = this.textContent;
+                        this.textContent = 'URL copiada!';
+                        setTimeout(() => {
+                            this.textContent = originalText;
+                        }, 2000);
+                    });
+                });
+            }
+            
+            // Configurar evento de login
+            loginBtn.addEventListener('click', function() {
+                const accessKey = accessKeyInput.value.trim();
+                
+                // Validar chave
+                if (!accessKey) {
+                    errorMessage.textContent = 'Por favor, digite a chave de acesso.';
+                    errorMessage.style.display = 'block';
+                    successMessage.style.display = 'none';
+                    return;
+                }
+                
+                // Verificar autenticação
+                if (authenticate(accessKey)) {
+                    // Sucesso
+                    errorMessage.style.display = 'none';
+                    successMessage.style.display = 'block';
+                    loginBtn.disabled = true;
+                    loginBtn.textContent = 'Acesso autorizado...';
+                    
+                    // Redirecionar após 1 segundo
+                    setTimeout(() => {
+                        window.location.href = 'admin.html';
+                    }, 1000);
+                } else {
+                    // Falha
+                    errorMessage.style.display = 'block';
+                    successMessage.style.display = 'none';
+                    accessKeyInput.value = '';
+                    accessKeyInput.focus();
+                }
+            });
+            
+            // Permitir login com Enter
+            accessKeyInput.addEventListener('keyup', function(event) {
+                if (event.key === 'Enter') {
+                    loginBtn.click();
+                }
+            });
+        });
+        
+        // Função de autenticação
+        function authenticate(accessKey) {
+            // Verificar se a chave está correta
+            // A chave padrão é "admin123", mas pode ser alterada no localStorage
+            const storedKey = localStorage.getItem('adminAccessKey') || 'admin123';
+            
+            if (accessKey === storedKey) {
+                // Salvar sessão
+                const sessionData = {
+                    authenticated: true,
+                    timestamp: new Date().getTime()
+                };
+                localStorage.setItem('adminSession', JSON.stringify(sessionData));
+                return true;
+            }
+            
+            return false;
+        }
+        
+        // Verificar se está autenticado
+        function isAuthenticated() {
+            const sessionData = JSON.parse(localStorage.getItem('adminSession') || 'null');
+            
+            if (!sessionData || !sessionData.authenticated) {
+                return false;
+            }
+            
+            // Verificar se a sessão expirou (24 horas)
+            const now = new Date().getTime();
+            const sessionAge = now - sessionData.timestamp;
+            const maxAge = 24 * 60 * 60 * 1000; // 24 horas em milissegundos
+            
+            if (sessionAge > maxAge) {
+                localStorage.removeItem('adminSession');
+                return false;
+            }
+            
+            return true;
+        }
+    </script>
+</body>
+</html>

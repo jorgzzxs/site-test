@@ -1,0 +1,471 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Catálogo de Templates | TemplateStore</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Montserrat:wght@800;900&display=swap" rel="stylesheet">
+    <link rel="icon" type="image/x-icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🚀</text></svg>">
+</head>
+<body>
+    <!-- Cabeçalho -->
+    <header class="header">
+        <div class="container">
+            <div class="logo">
+                <a href="index.html">
+                    <span class="logo-icon">🚀</span>
+                    <span class="logo-text">Template<span class="logo-highlight">Store</span></span>
+                </a>
+            </div>
+            
+            <nav class="nav-menu">
+                <ul class="nav-list">
+                    <li><a href="index.html">Início</a></li>
+                    <li><a href="produtos.html" class="active">Templates</a></li>
+                    <li><a href="index.html#como-funciona">Como Funciona</a></li>
+                    <li><a href="index.html#beneficios">Benefícios</a></li>
+                    <li><a href="index.html#contato">Contato</a></li>
+                </ul>
+            </nav>
+            
+            <div class="mobile-menu-btn">
+                <i class="fas fa-bars"></i>
+            </div>
+        </div>
+    </header>
+
+    <!-- Banner da página de produtos -->
+    <section class="page-banner">
+        <div class="container">
+            <h1 class="banner-title">Nossos <span class="highlight">Templates</span></h1>
+            <p class="banner-subtitle">Descubra designs profissionais para qualquer tipo de projeto</p>
+            <div class="search-bar">
+                <input type="text" id="product-search" placeholder="Buscar templates por nome, categoria ou descrição...">
+                <button id="search-btn"><i class="fas fa-search"></i></button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Filtros e Ordenação -->
+    <section class="filters-section">
+        <div class="container">
+            <div class="filters-container">
+                <div class="filter-group">
+                    <label for="category-filter">Categoria:</label>
+                    <select id="category-filter">
+                        <option value="all">Todas as Categorias</option>
+                        <option value="landing">Landing Page</option>
+                        <option value="ecommerce">E-commerce</option>
+                        <option value="portfolio">Portfólio</option>
+                        <option value="blog">Blog</option>
+                        <option value="business">Negócios</option>
+                        <option value="creative">Criativo</option>
+                    </select>
+                </div>
+                
+                <div class="filter-group">
+                    <label for="sort-filter">Ordenar por:</label>
+                    <select id="sort-filter">
+                        <option value="name-asc">Nome (A-Z)</option>
+                        <option value="name-desc">Nome (Z-A)</option>
+                        <option value="price-asc">Preço (menor para maior)</option>
+                        <option value="price-desc">Preço (maior para menor)</option>
+                        <option value="newest">Mais Recentes</option>
+                    </select>
+                </div>
+                
+                <div class="filter-group">
+                    <label for="price-range">Faixa de Preço:</label>
+                    <select id="price-range">
+                        <option value="all">Todos os Preços</option>
+                        <option value="0-50">Até R$ 50</option>
+                        <option value="50-100">R$ 50 - R$ 100</option>
+                        <option value="100-200">R$ 100 - R$ 200</option>
+                        <option value="200+">Acima de R$ 200</option>
+                    </select>
+                </div>
+                
+                <button id="reset-filters" class="btn btn-small btn-outline">Limpar Filtros</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Lista de Produtos -->
+    <section class="products-section">
+        <div class="container">
+            <div class="products-header">
+                <h2 id="products-count" class="section-title">Carregando produtos...</h2>
+                <div id="products-view" class="view-toggle">
+                    <button class="view-btn active" data-view="grid"><i class="fas fa-th"></i></button>
+                    <button class="view-btn" data-view="list"><i class="fas fa-list"></i></button>
+                </div>
+            </div>
+            
+            <div class="products-container" id="products-container">
+                <!-- Os produtos serão carregados via JavaScript -->
+                <div class="loading">Carregando templates...</div>
+            </div>
+            
+            <div class="no-results" id="no-results" style="display: none;">
+                <i class="fas fa-search fa-3x"></i>
+                <h3>Nenhum template encontrado</h3>
+                <p>Tente ajustar seus filtros ou termos de busca.</p>
+                <button id="clear-all-filters" class="btn btn-primary">Limpar todos os filtros</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Chamada para Ação -->
+    <section class="cta-section">
+        <div class="container">
+            <div class="cta-content">
+                <h2 class="cta-title">Não encontrou o template perfeito?</h2>
+                <p class="cta-text">Entre em contato conosco! Podemos desenvolver um template personalizado para atender suas necessidades específicas.</p>
+                <a href="index.html#contato" class="btn btn-primary">Solicitar Orçamento</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Rodapé -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <div class="logo">
+                        <a href="index.html">
+                            <span class="logo-icon">🚀</span>
+                            <span class="logo-text">Template<span class="logo-highlight">Store</span></span>
+                        </a>
+                    </div>
+                    <p class="footer-description">Templates digitais profissionais para impulsionar seu negócio online.</p>
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                    </div>
+                </div>
+                
+                <div class="footer-section">
+                    <h3 class="footer-title">Links Rápidos</h3>
+                    <ul class="footer-links">
+                        <li><a href="index.html">Início</a></li>
+                        <li><a href="produtos.html">Templates</a></li>
+                        <li><a href="index.html#como-funciona">Como Funciona</a></li>
+                        <li><a href="index.html#beneficios">Benefícios</a></li>
+                        <li><a href="index.html#contato">Contato</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-section">
+                    <h3 class="footer-title">Categorias</h3>
+                    <ul class="footer-links">
+                        <li><a href="produtos.html?category=landing">Landing Pages</a></li>
+                        <li><a href="produtos.html?category=ecommerce">E-commerce</a></li>
+                        <li><a href="produtos.html?category=portfolio">Portfólio</a></li>
+                        <li><a href="produtos.html?category=blog">Blog</a></li>
+                        <li><a href="produtos.html?category=all">Todos os Templates</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-section">
+                    <h3 class="footer-title">Suporte</h3>
+                    <ul class="footer-links">
+                        <li><a href="#">FAQ</a></li>
+                        <li><a href="#">Tutoriais</a></li>
+                        <li><a href="#">Política de Reembolso</a></li>
+                        <li><a href="#">Termos de Uso</a></li>
+                        <li><a href="#">Política de Privacidade</a></li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                <p>&copy; <span id="current-year">2024</span> TemplateStore. Todos os direitos reservados.</p>
+                <p>Desenvolvido com ❤️ para criativos e empreendedores digitais</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+    <script>
+        // Script específico para a página de produtos
+        document.addEventListener('DOMContentLoaded', function() {
+            // Atualizar ano no rodapé
+            document.getElementById('current-year').textContent = new Date().getFullYear();
+            
+            // Verificar parâmetros da URL
+            const urlParams = new URLSearchParams(window.location.search);
+            const categoryParam = urlParams.get('category');
+            
+            // Aplicar categoria da URL ao filtro
+            if (categoryParam) {
+                const categoryFilter = document.getElementById('category-filter');
+                if (categoryFilter) {
+                    categoryFilter.value = categoryParam;
+                }
+            }
+            
+            // Carregar produtos
+            loadProducts();
+            
+            // Configurar eventos dos filtros
+            setupFilters();
+            
+            // Configurar busca
+            setupSearch();
+            
+            // Configurar botões de visualização
+            setupViewToggle();
+        });
+        
+        function loadProducts() {
+            const productsContainer = document.getElementById('products-container');
+            const productsCount = document.getElementById('products-count');
+            const noResults = document.getElementById('no-results');
+            
+            if (!productsContainer) return;
+            
+            // Carregar produtos do arquivo data.js
+            if (typeof products !== 'undefined' && products.length > 0) {
+                // Aplicar filtros
+                const filteredProducts = applyFilters(products);
+                
+                // Atualizar contador
+                productsCount.textContent = `${filteredProducts.length} Templates Disponíveis`;
+                
+                // Limpar container
+                productsContainer.innerHTML = '';
+                
+                // Verificar se há resultados
+                if (filteredProducts.length === 0) {
+                    productsContainer.style.display = 'none';
+                    noResults.style.display = 'block';
+                    return;
+                } else {
+                    productsContainer.style.display = 'grid';
+                    noResults.style.display = 'none';
+                }
+                
+                // Verificar modo de visualização atual
+                const isGridView = document.querySelector('.view-btn.active').dataset.view === 'grid';
+                const viewClass = isGridView ? 'grid-view' : 'list-view';
+                
+                // Adicionar classe de visualização
+                productsContainer.className = `products-container ${viewClass}`;
+                
+                // Adicionar produtos ao DOM
+                filteredProducts.forEach(product => {
+                    const productCard = document.createElement('div');
+                    productCard.className = 'product-card';
+                    
+                    // Determinar a primeira imagem do produto
+                    const mainImage = product.images && product.images.length > 0 ? product.images[0] : 'product-placeholder.jpg';
+                    
+                    // Formatar descrição para lista
+                    const shortDesc = product.shortDescription.length > 150 ? 
+                        product.shortDescription.substring(0, 150) + '...' : product.shortDescription;
+                    
+                    productCard.innerHTML = `
+                        <div class="product-image">
+                            <img src="${mainImage}" alt="${product.name}" onerror="this.src='data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMzAwIiBoZWlnaHQ9IjIwMCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48cmVjdCB3aWR0aD0iMTAwJSIgaGVpZ2h0PSIxMDAlIiBmaWxsPSIjZjBmNWZhIi8+PHRleHQgeD0iNTAlIiB5PSI1MCUiIGZvbnQtZmFtaWx5PSJQb3BwaW5zIiBmb250LXNpemU9IjE0IiB0ZXh0LWFuY2hvcj0ibWlkZGxlIiBmaWxsPSIjMzMzIj5JbWFnZW0gZG8gUHJvZHV0bzwvdGV4dD48L3N2Zz4K'">
+                            <div class="product-overlay">
+                                <a href="produto.html?id=${product.id}" class="btn btn-small">Ver Detalhes</a>
+                            </div>
+                            ${product.isNew ? '<span class="product-badge new">Novo</span>' : ''}
+                            ${product.isPopular ? '<span class="product-badge popular">Popular</span>' : ''}
+                        </div>
+                        <div class="product-info">
+                            <h3 class="product-title">${product.name}</h3>
+                            <p class="product-description">${shortDesc}</p>
+                            <div class="product-meta">
+                                <span class="product-category">${product.category || 'Geral'}</span>
+                                <span class="product-rating">
+                                    ${generateStars(product.rating || 4.5)}
+                                    <span class="rating-value">${product.rating || 4.5}</span>
+                                </span>
+                            </div>
+                            <div class="product-footer">
+                                <div class="product-price">R$ ${product.price.toFixed(2)}</div>
+                                <a href="produto.html?id=${product.id}" class="btn btn-small btn-primary">Ver Template</a>
+                            </div>
+                        </div>
+                    `;
+                    
+                    productsContainer.appendChild(productCard);
+                });
+            } else {
+                productsContainer.innerHTML = '<p class="no-products">Nenhum produto disponível no momento.</p>';
+                productsCount.textContent = '0 Templates Disponíveis';
+            }
+        }
+        
+        function generateStars(rating) {
+            let stars = '';
+            const fullStars = Math.floor(rating);
+            const hasHalfStar = rating % 1 >= 0.5;
+            
+            for (let i = 0; i < fullStars; i++) {
+                stars += '<i class="fas fa-star"></i>';
+            }
+            
+            if (hasHalfStar) {
+                stars += '<i class="fas fa-star-half-alt"></i>';
+            }
+            
+            const emptyStars = 5 - fullStars - (hasHalfStar ? 1 : 0);
+            for (let i = 0; i < emptyStars; i++) {
+                stars += '<i class="far fa-star"></i>';
+            }
+            
+            return stars;
+        }
+        
+        function applyFilters(productList) {
+            let filtered = [...productList];
+            
+            // Aplicar filtro de categoria
+            const categoryFilter = document.getElementById('category-filter');
+            if (categoryFilter && categoryFilter.value !== 'all') {
+                filtered = filtered.filter(product => product.category === categoryFilter.value);
+            }
+            
+            // Aplicar filtro de faixa de preço
+            const priceFilter = document.getElementById('price-range');
+            if (priceFilter && priceFilter.value !== 'all') {
+                const priceRange = priceFilter.value;
+                
+                if (priceRange === '0-50') {
+                    filtered = filtered.filter(product => product.price <= 50);
+                } else if (priceRange === '50-100') {
+                    filtered = filtered.filter(product => product.price > 50 && product.price <= 100);
+                } else if (priceRange === '100-200') {
+                    filtered = filtered.filter(product => product.price > 100 && product.price <= 200);
+                } else if (priceRange === '200+') {
+                    filtered = filtered.filter(product => product.price > 200);
+                }
+            }
+            
+            // Aplicar ordenação
+            const sortFilter = document.getElementById('sort-filter');
+            if (sortFilter) {
+                const sortValue = sortFilter.value;
+                
+                if (sortValue === 'name-asc') {
+                    filtered.sort((a, b) => a.name.localeCompare(b.name));
+                } else if (sortValue === 'name-desc') {
+                    filtered.sort((a, b) => b.name.localeCompare(a.name));
+                } else if (sortValue === 'price-asc') {
+                    filtered.sort((a, b) => a.price - b.price);
+                } else if (sortValue === 'price-desc') {
+                    filtered.sort((a, b) => b.price - a.price);
+                } else if (sortValue === 'newest') {
+                    // Ordenar por ID (supondo que IDs maiores são mais recentes)
+                    filtered.sort((a, b) => b.id - a.id);
+                }
+            }
+            
+            // Aplicar busca
+            const searchInput = document.getElementById('product-search');
+            if (searchInput && searchInput.value.trim() !== '') {
+                const searchTerm = searchInput.value.trim().toLowerCase();
+                filtered = filtered.filter(product => 
+                    product.name.toLowerCase().includes(searchTerm) ||
+                    product.shortDescription.toLowerCase().includes(searchTerm) ||
+                    (product.category && product.category.toLowerCase().includes(searchTerm))
+                );
+            }
+            
+            return filtered;
+        }
+        
+        function setupFilters() {
+            // Adicionar eventos aos filtros
+            const filters = ['category-filter', 'sort-filter', 'price-range'];
+            
+            filters.forEach(filterId => {
+                const filterElement = document.getElementById(filterId);
+                if (filterElement) {
+                    filterElement.addEventListener('change', loadProducts);
+                }
+            });
+            
+            // Configurar botão de limpar filtros
+            const resetButton = document.getElementById('reset-filters');
+            if (resetButton) {
+                resetButton.addEventListener('click', function() {
+                    // Resetar todos os filtros
+                    document.getElementById('category-filter').value = 'all';
+                    document.getElementById('sort-filter').value = 'name-asc';
+                    document.getElementById('price-range').value = 'all';
+                    document.getElementById('product-search').value = '';
+                    
+                    loadProducts();
+                });
+            }
+            
+            // Configurar botão de limpar todos os filtros
+            const clearAllButton = document.getElementById('clear-all-filters');
+            if (clearAllButton) {
+                clearAllButton.addEventListener('click', function() {
+                    // Resetar todos os filtros
+                    document.getElementById('category-filter').value = 'all';
+                    document.getElementById('sort-filter').value = 'name-asc';
+                    document.getElementById('price-range').value = 'all';
+                    document.getElementById('product-search').value = '';
+                    
+                    loadProducts();
+                });
+            }
+        }
+        
+        function setupSearch() {
+            const searchInput = document.getElementById('product-search');
+            const searchButton = document.getElementById('search-btn');
+            
+            if (searchInput) {
+                searchInput.addEventListener('keyup', function(event) {
+                    if (event.key === 'Enter') {
+                        loadProducts();
+                    }
+                });
+            }
+            
+            if (searchButton) {
+                searchButton.addEventListener('click', loadProducts);
+            }
+        }
+        
+        function setupViewToggle() {
+            const viewButtons = document.querySelectorAll('.view-btn');
+            const productsContainer = document.getElementById('products-container');
+            
+            viewButtons.forEach(button => {
+                button.addEventListener('click', function() {
+                    // Remover classe ativa de todos os botões
+                    viewButtons.forEach(btn => btn.classList.remove('active'));
+                    
+                    // Adicionar classe ativa ao botão clicado
+                    this.classList.add('active');
+                    
+                    // Atualizar visualização
+                    const viewType = this.dataset.view;
+                    
+                    if (productsContainer) {
+                        // Remover classes de visualização anteriores
+                        productsContainer.classList.remove('grid-view', 'list-view');
+                        
+                        // Adicionar nova classe de visualização
+                        productsContainer.classList.add(`${viewType}-view`);
+                        
+                        // Recarregar produtos para aplicar o layout correto
+                        loadProducts();
+                    }
+                });
+            });
+        }
+    </script>
+</body>
+</html>
